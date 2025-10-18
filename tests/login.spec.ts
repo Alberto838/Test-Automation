@@ -27,14 +27,13 @@ test.describe('User login to Demobank', () => {
 		)
 	})
 
-	test('unsuccessful login with too short password', async ({ page }) => {
+	test.only('unsuccessful login with too short password', async ({ page }) => {
 		await page.goto('https://demo-bank.vercel.app/')
 		await page.getByTestId('login-input').click()
 		await page.getByTestId('login-input').fill('tester12')
 		await page.getByTestId('password-input').click()
 		await page.getByTestId('password-input').fill('12345')
-		await page.getByText('identyfikator', { exact: true }).click()
-		await page.getByTestId('error-login-password').click()
+		await page.getByTestId('password-input').blur()
 
 		await expect(page.getByTestId('error-login-password')).toHaveText(
 			'hasło ma min. 8 znaków'
