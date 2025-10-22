@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 
 test.describe('Pulpit tests', () => {
 	test.describe.configure({ retries: 3 })
-	test.only('quick payment with correct data', async ({ page }) => {
+	test('quick payment with correct data', async ({ page }) => {
 		await page.goto('https://demo-bank.vercel.app/')
 		await page.getByTestId('login-input').fill('test1234')
 		await page.getByTestId('password-input').fill('12345567')
